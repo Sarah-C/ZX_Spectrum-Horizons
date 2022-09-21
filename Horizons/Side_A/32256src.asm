@@ -4,7 +4,7 @@
 ; 
 ; Created with dZ80 2.0
 ; 
-; on Wednesday, 21 of September 2022 at 03:38 PM
+; on Wednesday, 21 of September 2022 at 03:38 AM
 ; 
 7e00 210f5b    ld      hl,5b0fh
 7e03 7e        ld      a,(hl)
