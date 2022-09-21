@@ -44,10 +44,10 @@ ORG 7e00;
 7e31 32065b    ld      (5b06h),a
 7e34 3a055b    ld      a,(5b05h)
 7e37 3d        dec     a
-7e38 2032      jr      nz,7e6ch
+7e38 2032      jr      nz,7e6ch   ;  GOTO NZ 70 --------------
 7e3a 3a045b    ld      a,(5b04h)
 7e3d 3d        dec     a
-7e3e 2018      jr      nz,7e58h
+7e3e 2018      jr      nz,7e58h   ;  GOTO NZ 62 -------------- 
 7e40 3a0e5b    ld      a,(5b0eh)  ; 23310 : Text to display, 255=End
 7e43 47        ld      b,a
 7e44 3a0c5b    ld      a,(5b0ch)
@@ -55,10 +55,10 @@ ORG 7e00;
 7e48 3a0a5b    ld      a,(5b0ah)
 7e4b 81        add     a,c
 7e4c 05        dec     b
-7e4d 20fc      jr      nz,7e4bh
+7e4d 20fc      jr      nz,7e4bh   ; GOTO NZ 56 --------------
 7e4f 320a5b    ld      (5b0ah),a
 7e52 2a005b    ld      hl,(5b00h)
-7e55 c3037e    jp      7e03h
+7e55 c3037e    jp      7e03h      ; GOTO 19 --------------
 7e58 32045b    ld      (5b04h),a
 7e5b 3a0d5b    ld      a,(5b0dh)
 7e5e 47        ld      b,a
@@ -66,7 +66,7 @@ ORG 7e00;
 7e62 80        add     a,b
 7e63 32095b    ld      (5b09h),a
 7e66 2a025b    ld      hl,(5b02h)
-7e69 c3207e    jp      7e20h
+7e69 c3207e    jp      7e20h      ; GOTO 36 --------------
 7e6c 32055b    ld      (5b05h),a
 7e6f 3a0c5b    ld      a,(5b0ch)  ; 23308 : X Size
 7e72 47        ld      b,a
@@ -81,17 +81,17 @@ ORG 7e00;
 7e85 3c        inc     a
 7e86 32075b    ld      (5b07h),a
 7e89 0d        dec     c
-7e8a 20f1      jr      nz,7e7dh
+7e8a 20f1      jr      nz,7e7dh   ; GOTO NZ 77  --------------
 7e8c 3a085b    ld      a,(5b08h)
 7e8f 3c        inc     a
 7e90 32085b    ld      (5b08h),a
 7e93 05        dec     b
-7e94 20dd      jr      nz,7e73h
+7e94 20dd      jr      nz,7e73h  ; GOTO NZ 73 --------------
 7e96 3a065b    ld      a,(5b06h)
-7e99 c3307e    jp      7e30h
+7e99 c3307e    jp      7e30h     ; GOTO 43 --------------
 7e9c 80        add     a,b
 7e9d 40        ld      b,b
-7e9e 2010      jr      nz,7eb0h
+7e9e 2010      jr      nz,7eb0h  ; GOTO NZ 106????  --------------
 7ea0 08        ex      af,af'
 7ea1 04        inc     b
 7ea2 02        ld      (bc),a
@@ -163,16 +163,16 @@ ORG 7e00;
 7f05 1a        ld      a,(de)
 7f06 21065b    ld      hl,5b06h
 7f09 cb46      bit     0,(hl)
-7f0b 2803      jr      z,7f10h
+7f0b 2803      jr      z,7f10h  ; GOTO Z 171 --------------
 7f0d b0        or      b
 7f0e 12        ld      (de),a
-7f0f c9        ret     
+7f0f c9        ret              ;  --------------
 
 7f10 2f        cpl     
 7f11 b0        or      b
 7f12 2f        cpl     
 7f13 12        ld      (de),a
-7f14 c9        ret     
+7f14 c9        ret              ;  --------------
 
 7f15 00        nop     
 7f16 00        nop     
