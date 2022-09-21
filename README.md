@@ -1,5 +1,5 @@
 # ZX Spectrum: Horizons
-This is the ZX Spectrum Horizons introductory cassette tape BASIC source.    
+This is the ZX Spectrum Horizons introductory cassette tape BASIC source code.    
 
 (There's also one dissassembly of the machine code programs that draw the very large text to the screen - though it's managed to do so slowly even in Z80 assembly!)
 
