@@ -13,6 +13,8 @@
 ; 
 ; Comments are a work in progress as I relearn the assembly/environment.   =)
 
+ORG 7e00;
+
 7e00 210f5b    ld      hl,5b0fh   ; HL = 23296       : (X start position?)
 7e03 7e        ld      a,(hl)     ; A = PEEK(HL)
 7e04 23        inc     hl         ; HL++
