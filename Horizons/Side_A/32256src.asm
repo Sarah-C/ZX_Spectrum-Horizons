@@ -6,13 +6,16 @@
 ; 
 ; on Wednesday, 21 of September 2022 at 03:38 AM
 ; 
-7e00 210f5b    ld      hl,5b0fh
-7e03 7e        ld      a,(hl)
-7e04 23        inc     hl
-7e05 22005b    ld      (5b00h),hl
-7e08 6f        ld      l,a
-7e09 3c        inc     a
-7e0a c8        ret     z
+; Print buffer between 5B00h (23296) and 5C00h (23552) is used for variable storage.
+; 
+; 
+7e00 210f5b    ld      hl,5b0fh   ; 23296
+7e03 7e        ld      a,(hl)     ; A = PEEK(HL)
+7e04 23        inc     hl         ; HL++
+7e05 22005b    ld      (5b00h),hl ; POKE 23296, HL 
+7e08 6f        ld      l,a        ; L = A
+7e09 3c        inc     a          ; A++
+7e0a c8        ret     z          ; Return if A = Zero
 
 7e0b 2600      ld      h,00h
 7e0d 29        add     hl,hl
