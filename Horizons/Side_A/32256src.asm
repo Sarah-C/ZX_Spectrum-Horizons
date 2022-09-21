@@ -16,7 +16,7 @@
 ORG 7e00;
 
 7e00 210f5b    ld      hl,5b0fh   ; HL = 23296       : (X start position?)
-7e03 7e        ld      a,(hl)     ; A = PEEK(HL)
+7e03 7e        ld      a,(hl)     ; A = PEEK(HL)     ;                *LOOP START POINT from line 61*
 7e04 23        inc     hl         ; HL++
 7e05 22005b    ld      (5b00h),hl ; POKE 23296, HL 
 7e08 6f        ld      l,a        ; L = A
@@ -33,14 +33,14 @@ ORG 7e00;
 7e17 32045b    ld      (5b04h),a  ; POKE 23300, A
 7e1a 3a0b5b    ld      a,(5b0bh)  ; 23307 : Y Position
 7e1d 32095b    ld      (5b09h),a
-7e20 3a0a5b    ld      a,(5b0ah)  ; 23306 : X Position
+7e20 3a0a5b    ld      a,(5b0ah)  ; 23306 : X Position              *LOOP START POINT from line 69*
 7e23 32085b    ld      (5b08h),a
 7e26 3e09      ld      a,09h
 7e28 32055b    ld      (5b05h),a
 7e2b 7e        ld      a,(hl)
 7e2c 23        inc     hl
 7e2d 22025b    ld      (5b02h),hl
-7e30 07        rlca    
+7e30 07        rlca    ;                                            *LOOP START POINT from line 91*
 7e31 32065b    ld      (5b06h),a
 7e34 3a055b    ld      a,(5b05h)
 7e37 3d        dec     a
@@ -70,11 +70,11 @@ ORG 7e00;
 7e6c 32055b    ld      (5b05h),a
 7e6f 3a0c5b    ld      a,(5b0ch)  ; 23308 : X Size
 7e72 47        ld      b,a
-7e73 3a095b    ld      a,(5b09h)
+7e73 3a095b    ld      a,(5b09h)  ;                                  *LOOP START POINT from line 89*
 7e76 32075b    ld      (5b07h),a
 7e79 3a0d5b    ld      a,(5b0dh)  ; 23309 : Y Size
 7e7c 4f        ld      c,a
-7e7d c5        push    bc
+7e7d c5        push    bc         ;                                  *LOOP START POINT from line 84*
 7e7e cda47e    call    7ea4h
 7e81 c1        pop     bc
 7e82 3a075b    ld      a,(5b07h)
