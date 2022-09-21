@@ -11,7 +11,7 @@
 ; Locations such as 23606 and onwards are system variables:
 ; https://skoolkid.github.io/rom/buffers/sysvars.html
 ; 
-; Comments are a work in progress.   =)
+; Comments are a work in progress as I relearn the assembly/environment.   =)
 
 7e00 210f5b    ld      hl,5b0fh   ; HL = 23296       : (X start position?)
 7e03 7e        ld      a,(hl)     ; A = PEEK(HL)
