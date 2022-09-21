@@ -7,6 +7,8 @@
 ; on Wednesday, 21 of September 2022 at 03:38 AM
 ; 
 ; Print buffer between 5B00h (23296) and 5C00h (23552) is used for variable storage.
+; Locations such as 23606 are system variables, and listed on page 206 (page 206 of the PDF, the pages aren't numbered) onwards of the ZX Spectrum +2A manual:
+; https://ia600604.us.archive.org/view_archive.php?archive=/1/items/World_of_Spectrum_June_2017_Mirror/World%20of%20Spectrum%20June%202017%20Mirror.zip&file=World%20of%20Spectrum%20June%202017%20Mirror/sinclair/books/z/ZXSpectrum%2B2aManual.pdf
 ; 
 ; 
 7e00 210f5b    ld      hl,5b0fh   ; HL = 23296  (X start oposition?)
