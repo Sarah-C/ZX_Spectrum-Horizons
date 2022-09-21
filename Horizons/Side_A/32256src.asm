@@ -97,7 +97,7 @@
 7ea6 5c        ld      e,h
 7ea7 eeff      xor     0ffh
 7ea9 47        ld      b,a
-7eaa 3a8d5c    ld      a,(5c8dh)
+7eaa 3a8d5c    ld      a,(5c8dh)   ;  ATTR-P - Permanent current colours
 7ead a0        and     b
 7eae 47        ld      b,a
 7eaf 3a085b    ld      a,(5b08h)
@@ -121,7 +121,7 @@
 7ecd 3e58      ld      a,58h
 7ecf b4        or      h
 7ed0 67        ld      h,a
-7ed1 3a8e5c    ld      a,(5c8eh)
+7ed1 3a8e5c    ld      a,(5c8eh)   ;  MASK-P - Used for transparent colours
 7ed4 a6        and     (hl)
 7ed5 b0        or      b
 7ed6 77        ld      (hl),a
