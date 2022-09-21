@@ -19,7 +19,7 @@ Also included on side B are a sophisticated version of Life, a Bubblesort routin
 
 The presentation cassette is very good. It should keep Spectrum users happy for hours and is well worth waiting for.                      
 
-.................. Spectrum User issue 7, October 1982
+----------------- "Spectrum User" issue 7, October 1982
 
 ![image](https://user-images.githubusercontent.com/1586332/191536953-a241d405-5179-46a1-9bcc-ab720b553a8b.png)
 ![image](https://user-images.githubusercontent.com/1586332/191537028-24ab9910-ecbd-4575-9ecc-18b2c33fe1d0.png)
