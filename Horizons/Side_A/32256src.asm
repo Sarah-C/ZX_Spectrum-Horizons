@@ -8,10 +8,8 @@
 ; 
 ; The 48k Spectrum has a print-buffer between 5B00h (23296) and 5C00h (23552), which is used for variable storage in this code.
 ;
-; Locations such as 23606 and onwards are system variables, and listed on page 206 (page 206 of the PDF, the pages aren't numbered) 
-; onwards of the ZX Spectrum +2A manual:
-; https://ia600604.us.archive.org/view_archive.php?archive=/1/items/World_of_Spectrum_June_2017_Mirror/World%20of%20Spectrum%20June%202017%20Mirror.zip&file=World%20of%20Spectrum%20June%202017%20Mirror/sinclair/books/z/ZXSpectrum%2B2aManual.pdf
-; 
+; Locations such as 23606 and onwards are system variables:
+; https://skoolkid.github.io/rom/buffers/sysvars.html
 ; 
 ; Comments are a work in progress.   =)
 
