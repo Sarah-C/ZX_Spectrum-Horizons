@@ -31,17 +31,17 @@ Var d$: Str = "BEATING OF"
  147 PLOT 0,136: DRAW 255,0
  148 PLOT 127,136: DRAW 0,38
  149 IF h=1 THEN RETURN
- 150 INPUT "amplitude of wave 1? (0\#20425)  "; LINE z$: GO SUB 700
+ 150 INPUT "amplitude of wave 1? (0 TO 25)  "; LINE z$: GO SUB 700
  151 IF z=100 THEN GO TO 150
  155 LET b=g: LET a=b: PRINT AT 2,3;a: IF h=1 THEN RETURN
- 160 INPUT "frequency of wave 1?(4\#20450)   "; LINE z$: GO SUB 700
+ 160 INPUT "frequency of wave 1?(4 TO 50)   "; LINE z$: GO SUB 700
  161 IF z=100 THEN GO TO 160
  162 LET n=z: LET m=n: PRINT AT 3,3;m: IF h=1 THEN RETURN
  180 GO SUB 250
- 190 INPUT "amplitude of wave 2?(0\#20425)   "; LINE z$: GO SUB 700
+ 190 INPUT "amplitude of wave 2?(0 TO 25)   "; LINE z$: GO SUB 700
  191 IF z=100 THEN GO TO 190
  195 LET b=g: PRINT AT 2,19;b: IF h=1 THEN RETURN
- 200 INPUT "frequency of wave 2?(4\#20450)   "; LINE z$: GO SUB 700
+ 200 INPUT "frequency of wave 2?(4 TO 50)   "; LINE z$: GO SUB 700
  201 IF z=100 THEN GO TO 200
  210 LET n=z: PRINT AT 3,19;n: IF h=1 THEN RETURN
  220 GO SUB 250
