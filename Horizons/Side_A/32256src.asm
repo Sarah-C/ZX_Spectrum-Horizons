@@ -22,9 +22,9 @@
 7e14 09        add     hl,bc
 7e15 3e08      ld      a,08h
 7e17 32045b    ld      (5b04h),a
-7e1a 3a0b5b    ld      a,(5b0bh)
+7e1a 3a0b5b    ld      a,(5b0bh)  ; 23307 : Y Position
 7e1d 32095b    ld      (5b09h),a
-7e20 3a0a5b    ld      a,(5b0ah)
+7e20 3a0a5b    ld      a,(5b0ah)  ; 23306 : X Position
 7e23 32085b    ld      (5b08h),a
 7e26 3e09      ld      a,09h
 7e28 32055b    ld      (5b05h),a
@@ -39,7 +39,7 @@
 7e3a 3a045b    ld      a,(5b04h)
 7e3d 3d        dec     a
 7e3e 2018      jr      nz,7e58h
-7e40 3a0e5b    ld      a,(5b0eh)
+7e40 3a0e5b    ld      a,(5b0eh)  ; 23310 : Text to display, 255=End
 7e43 47        ld      b,a
 7e44 3a0c5b    ld      a,(5b0ch)
 7e47 4f        ld      c,a
@@ -59,11 +59,11 @@
 7e66 2a025b    ld      hl,(5b02h)
 7e69 c3207e    jp      7e20h
 7e6c 32055b    ld      (5b05h),a
-7e6f 3a0c5b    ld      a,(5b0ch)
+7e6f 3a0c5b    ld      a,(5b0ch)  ; 23308 : X Size
 7e72 47        ld      b,a
 7e73 3a095b    ld      a,(5b09h)
 7e76 32075b    ld      (5b07h),a
-7e79 3a0d5b    ld      a,(5b0dh)
+7e79 3a0d5b    ld      a,(5b0dh)  ; 23309 : Y Size
 7e7c 4f        ld      c,a
 7e7d c5        push    bc
 7e7e cda47e    call    7ea4h
