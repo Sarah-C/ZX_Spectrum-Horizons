@@ -9,7 +9,7 @@
 ; Print buffer between 5B00h (23296) and 5C00h (23552) is used for variable storage.
 ; 
 ; 
-7e00 210f5b    ld      hl,5b0fh   ; 23296
+7e00 210f5b    ld      hl,5b0fh   ; HL = 23296  (X start oposition?)
 7e03 7e        ld      a,(hl)     ; A = PEEK(HL)
 7e04 23        inc     hl         ; HL++
 7e05 22005b    ld      (5b00h),hl ; POKE 23296, HL 
@@ -17,14 +17,14 @@
 7e09 3c        inc     a          ; A++
 7e0a c8        ret     z          ; Return if A = Zero
 
-7e0b 2600      ld      h,00h
-7e0d 29        add     hl,hl
-7e0e 29        add     hl,hl
-7e0f 29        add     hl,hl
-7e10 ed4b365c  ld      bc,(5c36h)
-7e14 09        add     hl,bc
-7e15 3e08      ld      a,08h
-7e17 32045b    ld      (5b04h),a
+7e0b 2600      ld      h,00h      ; H = 0
+7e0d 29        add     hl,hl      ; HL = HL + HL
+7e0e 29        add     hl,hl      ; HL = HL + HL
+7e0f 29        add     hl,hl      ; HL = HL + HL
+7e10 ed4b365c  ld      bc,(5c36h) ; BC = PEEK(23606) : Address of character bitmaps
+7e14 09        add     hl,bc      ; HL = HL + BC
+7e15 3e08      ld      a,08h      ; A = 8
+7e17 32045b    ld      (5b04h),a  ; POKE 23300, A
 7e1a 3a0b5b    ld      a,(5b0bh)  ; 23307 : Y Position
 7e1d 32095b    ld      (5b09h),a
 7e20 3a0a5b    ld      a,(5b0ah)  ; 23306 : X Position
