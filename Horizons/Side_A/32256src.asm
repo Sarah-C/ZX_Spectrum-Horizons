@@ -14,12 +14,15 @@
 ; Comments are a work in progress as I relearn the assembly/environment.   =)
 
 ; 5b00 23296 : Pointer to next character to display
+; 5b02 23298 : Pointer to next character row(byte) to display in chracter bitmap area (15360 onwards)
 ; 5b04 23300 : Counter for row (8 to 0)
-; 5b05 23301 : bit number?
+; 5b05 23301 : ?bit number?
+; 5b06 23302 : Current bit pattern for row being drawn, rotated left to get each pixel
 ; 5b08 23304 : X Position
 ; 5b09 23305 : Y Position
 ; 5b0a 23306 : X Position poked from BASIC
 ; 5b0b 23307 : Y Position poked from BASIC
+; 5b0c 23308 : ??????
 ; 5b0f 23311 : (and onwards) Text to display, ending in 255
 
 ORG 7e00;
@@ -36,9 +39,9 @@ ORG 7e00;
 7e0b 2600      ld      h,00h      ; H = 0
 7e0d 29        add     hl,hl      ; HL = HL + HL
 7e0e 29        add     hl,hl      ; HL = HL + HL
-7e0f 29        add     hl,hl      ; HL = HL + HL     : HL = A * 8
+7e0f 29        add     hl,hl      ; HL = HL + HL     : HL = A * 8  (This is the offset into the character bitmaps for this char)
 7e10 ed4b365c  ld      bc,(5c36h) ; BC = PEEK(23606) : Address of character bitmaps (always [0,60] 15360 for ROM)
-7e14 09        add     hl,bc      ; HL = HL + BC     : Char-Bitmap address + (A * 8)
+7e14 09        add     hl,bc      ; HL = HL + BC     : Add the current character bitmap offset to the base address of the character bitmaps.
 7e15 3e08      ld      a,08h      ; A = 8            : Count of bytes to draw (row count)
 7e17 32045b    ld      (5b04h),a  ; POKE 23300, A    : Store count in 23300
 7e1a 3a0b5b    ld      a,(5b0bh)  ; A = PEEK(23307)  : Get Y Position from BASIC
@@ -49,18 +52,18 @@ ORG 7e00;
 7e28 32055b    ld      (5b05h),a  ; POKE 23301, 9
 7e2b 7e        ld      a,(hl)     ; A = PEEK(address of character row to draw)
 7e2c 23        inc     hl
-7e2d 22025b    ld      (5b02h),hl
-7e30 07        rlca    ;                                            *LOOP START POINT from line 91*
-7e31 32065b    ld      (5b06h),a
-7e34 3a055b    ld      a,(5b05h)
-7e37 3d        dec     a
-7e38 2032      jr      nz,7e6ch   ;  GOTO NZ 70 --------------
+7e2d 22025b    ld      (5b02h),hl ; POKE 23298, next character bitmap row to draw
+7e30 07        rlca               ; Rotate A left                                *LOOP START POINT from line 91*
+7e31 32065b    ld      (5b06h),a  ; POKE 23302, current pixel row rotated left
+7e34 3a055b    ld      a,(5b05h)  ; A = PEEK (23301)
+7e37 3d        dec     a          ; Dec bit-number counter
+7e38 2032      jr      nz,7e6ch   ; GOTO NZ 70  : Jump if not done all bits in row --------------
 7e3a 3a045b    ld      a,(5b04h)
-7e3d 3d        dec     a
-7e3e 2018      jr      nz,7e58h   ;  GOTO NZ 62 -------------- 
-7e40 3a0e5b    ld      a,(5b0eh)  ; 23310 : Text to display, 255=End
-7e43 47        ld      b,a
-7e44 3a0c5b    ld      a,(5b0ch)
+7e3d 3d        dec     a          ; Dec row counter
+7e3e 2018      jr      nz,7e58h   ; GOTO NZ 62 : Jump if not done all rows -------------- 
+7e40 3a0e5b    ld      a,(5b0eh)  ; A = PEEK(23310) : Text to display, 255=End
+7e43 47        ld      b,a        ; B = A
+7e44 3a0c5b    ld      a,(5b0ch)  ; A = PEEK(23308) : ??????
 7e47 4f        ld      c,a
 7e48 3a0a5b    ld      a,(5b0ah)
 7e4b 81        add     a,c
