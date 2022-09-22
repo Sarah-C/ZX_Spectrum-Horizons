@@ -180,7 +180,7 @@ ORG 7e00;
 7f09 cb46      bit     0,(hl)
 7f0b 2803      jr      z,7f10h  ; GOTO Z 171 --------------
 7f0d b0        or      b
-7f0e 12        ld      (de),a
+7f0e 12        ld      (de),a   ; Draw A to screen 
 7f0f c9        ret              ;  --------------
 
 7f10 2f        cpl     
