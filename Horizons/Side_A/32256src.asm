@@ -24,7 +24,7 @@
 ; 5b0b 23307 : Y Position poked from BASIC
 ; 5b0c 23308 : X Size poked from BASIC
 ; 5b0d 23309 : Y Size poked from BASIC
-; 5b0e 23310 : 
+; 5b0e 23310 : Width in pixels between letters. < 8 results in pixels been rubbed out by later letters
 ; 5b0f 23311 : (and onwards) Text to display, ending in 255
 
 ORG 7e00;
