@@ -22,7 +22,9 @@
 ; 5b09 23305 : Y Position
 ; 5b0a 23306 : X Position poked from BASIC
 ; 5b0b 23307 : Y Position poked from BASIC
-; 5b0c 23308 : ??????
+; 5b0c 23308 : X Size poked from BASIC
+; 5b0d 23309 : Y Size poked from BASIC
+; 5b0e 23310 : 
 ; 5b0f 23311 : (and onwards) Text to display, ending in 255
 
 ORG 7e00;
@@ -61,11 +63,11 @@ ORG 7e00;
 7e3a 3a045b    ld      a,(5b04h)
 7e3d 3d        dec     a          ; Dec row counter
 7e3e 2018      jr      nz,7e58h   ; GOTO NZ 62 : Jump if not done all rows -------------- 
-7e40 3a0e5b    ld      a,(5b0eh)  ; A = PEEK(23310) : Text to display, 255=End
-7e43 47        ld      b,a        ; B = A
-7e44 3a0c5b    ld      a,(5b0ch)  ; A = PEEK(23308) : ??????
-7e47 4f        ld      c,a
-7e48 3a0a5b    ld      a,(5b0ah)
+7e40 3a0e5b    ld      a,(5b0eh)  ; A = Text to display, 255=End
+7e43 47        ld      b,a        ; B = A  : B is character to display
+7e44 3a0c5b    ld      a,(5b0ch)  ; A = X Size
+7e47 4f        ld      c,a        ; C = A  : C is X size
+7e48 3a0a5b    ld      a,(5b0ah)  ; A = X Position poked from BASIC
 7e4b 81        add     a,c
 7e4c 05        dec     b
 7e4d 20fc      jr      nz,7e4bh   ; GOTO NZ 56 --------------
