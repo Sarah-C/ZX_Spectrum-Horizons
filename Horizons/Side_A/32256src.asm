@@ -36,9 +36,9 @@ ORG 7e00;
 7e0b 2600      ld      h,00h      ; H = 0
 7e0d 29        add     hl,hl      ; HL = HL + HL
 7e0e 29        add     hl,hl      ; HL = HL + HL
-7e0f 29        add     hl,hl      ; HL = HL + HL     : HL = A * 4
+7e0f 29        add     hl,hl      ; HL = HL + HL     : HL = A * 8
 7e10 ed4b365c  ld      bc,(5c36h) ; BC = PEEK(23606) : Address of character bitmaps (always [0,60] 15360 for ROM)
-7e14 09        add     hl,bc      ; HL = HL + BC     : Char-Bitmap address + (A * 4)
+7e14 09        add     hl,bc      ; HL = HL + BC     : Char-Bitmap address + (A * 8)
 7e15 3e08      ld      a,08h      ; A = 8            : Count of bytes to draw (row count)
 7e17 32045b    ld      (5b04h),a  ; POKE 23300, A    : Store count in 23300
 7e1a 3a0b5b    ld      a,(5b0bh)  ; A = PEEK(23307)  : Get Y Position from BASIC
