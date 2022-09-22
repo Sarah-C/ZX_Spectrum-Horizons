@@ -90,7 +90,7 @@ ORG 7e00;
 7e79 3a0d5b    ld      a,(5b0dh)  ; 23309 : Y Size
 7e7c 4f        ld      c,a
 7e7d c5        push    bc         ;                                  *LOOP START POINT from line 84*
-7e7e cda47e    call    7ea4h
+7e7e cda47e    call    7ea4h      ; **Slightly dodgy call, as it appears to jump into the middle of a multi-byte command!**
 7e81 c1        pop     bc
 7e82 3a075b    ld      a,(5b07h)
 7e85 3c        inc     a
