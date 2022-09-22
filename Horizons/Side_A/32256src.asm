@@ -15,13 +15,13 @@
 
 ORG 7e00;
 
-7e00 210f5b    ld      hl,5b0fh   ; HL = 23296       : (X start position?)
-7e03 7e        ld      a,(hl)     ; A = PEEK(HL)     ;                *LOOP START POINT from line 61*
+7e00 210f5b    ld      hl,5b0fh   ; HL = 23311       : Start of text to display
+7e03 7e        ld      a,(hl)     ; A = PEEK(HL)                      *LOOP START POINT from line 61*
 7e04 23        inc     hl         ; HL++
 7e05 22005b    ld      (5b00h),hl ; POKE 23296, HL 
 7e08 6f        ld      l,a        ; L = A
 7e09 3c        inc     a          ; A++
-7e0a c8        ret     z          ; Return if A = Zero
+7e0a c8        ret     z          ; Return if A = Zero : (If A is 255, the INC A wraps it to 0, ending the string, and returning to BASIC here)
 
 7e0b 2600      ld      h,00h      ; H = 0
 7e0d 29        add     hl,hl      ; HL = HL + HL
