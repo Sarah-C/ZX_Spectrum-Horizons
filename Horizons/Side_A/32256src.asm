@@ -13,17 +13,23 @@
 ; 
 ; Comments are a work in progress as I relearn the assembly/environment.   =)
 
-;5b00 23296 : Pointer to next character to display
-;5b0f 23311 : (and onwards) Text to display, ending in 255
+; 5b00 23296 : Pointer to next character to display
+; 5b04 23300 : Counter for row (8 to 0)
+; 5b05 23301 : bit number?
+; 5b08 23304 : X Position
+; 5b09 23305 : Y Position
+; 5b0a 23306 : X Position poked from BASIC
+; 5b0b 23307 : Y Position poked from BASIC
+; 5b0f 23311 : (and onwards) Text to display, ending in 255
 
 ORG 7e00;
 
 
 7e00 210f5b    ld      hl,5b0fh   ; HL = 23311       : Start of text to display
-7e03 7e        ld      a,(hl)     ; A = PEEK(HL)                      *LOOP START POINT from line 61*
+7e03 7e        ld      a,(hl)     ; A = Next ASCII to draw    *LOOP START POINT from line 61*
 7e04 23        inc     hl         ; HL++
 7e05 22005b    ld      (5b00h),hl ; POKE 23296, HL 
-7e08 6f        ld      l,a        ; L = A
+7e08 6f        ld      l,a        ; L = A            : Store the chacrter to draw in L
 7e09 3c        inc     a          ; A++
 7e0a c8        ret     z          ; Return if A = Zero : (If A is 255, the INC A wraps it to 0, ending the string, and returning to BASIC here)
 
@@ -33,15 +39,15 @@ ORG 7e00;
 7e0f 29        add     hl,hl      ; HL = HL + HL     : HL = A * 4
 7e10 ed4b365c  ld      bc,(5c36h) ; BC = PEEK(23606) : Address of character bitmaps (always [0,60] 15360 for ROM)
 7e14 09        add     hl,bc      ; HL = HL + BC     : Char-Bitmap address + (A * 4)
-7e15 3e08      ld      a,08h      ; A = 8            : Count of bytes to draw
-7e17 32045b    ld      (5b04h),a  ; POKE 23300, A
-7e1a 3a0b5b    ld      a,(5b0bh)  ; 23307 : Y Position
-7e1d 32095b    ld      (5b09h),a
-7e20 3a0a5b    ld      a,(5b0ah)  ; 23306 : X Position              *LOOP START POINT from line 69*
-7e23 32085b    ld      (5b08h),a
+7e15 3e08      ld      a,08h      ; A = 8            : Count of bytes to draw (row count)
+7e17 32045b    ld      (5b04h),a  ; POKE 23300, A    : Store count in 23300
+7e1a 3a0b5b    ld      a,(5b0bh)  ; A = PEEK(23307)  : Get Y Position from BASIC
+7e1d 32095b    ld      (5b09h),a  ; POKE 23305, Store Y position
+7e20 3a0a5b    ld      a,(5b0ah)  ; A = PEEK(23306)  : Get X Position from BASIC *LOOP START POINT from line 69*
+7e23 32085b    ld      (5b08h),a  ; POKE 23304, Store X position
 7e26 3e09      ld      a,09h
-7e28 32055b    ld      (5b05h),a
-7e2b 7e        ld      a,(hl)
+7e28 32055b    ld      (5b05h),a  ; POKE 23301, 9
+7e2b 7e        ld      a,(hl)     ; A = PEEK(address of character row to draw)
 7e2c 23        inc     hl
 7e2d 22025b    ld      (5b02h),hl
 7e30 07        rlca    ;                                            *LOOP START POINT from line 91*
