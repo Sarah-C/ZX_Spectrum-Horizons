@@ -181,34 +181,12 @@ ORG 7e00;
 7f0b 2803      jr      z,7f10h  ; GOTO Z 171 --------------
 7f0d b0        or      b
 7f0e 12        ld      (de),a   ; Draw A to screen 
-7f0f c9        ret              ;  --------------
+7f0f c9        ret              ; --------------
 
 7f10 2f        cpl     
 7f11 b0        or      b
 7f12 2f        cpl     
-7f13 12        ld      (de),a
-7f14 c9        ret              ;  --------------
+7f13 12        ld      (de),a   ; Draw A to screen 
+7f14 c9        ret              ; --------------
 
 7f15 00        nop     
-7f16 00        nop     
-7f17 00        nop     
-7f18 00        nop     
-7f19 00        nop     
-7f1a 00        nop     
-7f1b 00        nop     
-7f1c 00        nop     
-7f1d 00        nop     
-7f1e 00        nop     
-7f1f 00        nop     
-7f20 00        nop     
-7f21 00        nop     
-7f22 00        nop     
-7f23 17        rla     
-7f24 dc0ace    call    c,0ce0ah
-7f27 0b        dec     bc
-7f28 e7        rst     20h
-7f29 50        ld      d,b
-7f2a 1a        ld      a,(de)
-7f2b 17        rla     
-7f2c 61        ld      h,c
-7f2d 00        nop     
