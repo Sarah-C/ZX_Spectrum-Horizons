@@ -13,7 +13,11 @@
 ; 
 ; Comments are a work in progress as I relearn the assembly/environment.   =)
 
+;5b00 23296 : Pointer to next character to display
+;5b0f 23311 : (and onwards) Text to display, ending in 255
+
 ORG 7e00;
+
 
 7e00 210f5b    ld      hl,5b0fh   ; HL = 23311       : Start of text to display
 7e03 7e        ld      a,(hl)     ; A = PEEK(HL)                      *LOOP START POINT from line 61*
